@@ -7,8 +7,6 @@ const Home = () => {
   const [movies, setMovies] = useState<MoviesComplete[] | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
-
-  // Combined state for sorting
   const [sortConfig, setSortConfig] = useState<{
     key: string;
     ascending: boolean;
@@ -40,7 +38,6 @@ const Home = () => {
     fetchMovies();
   }, [searchTerm, sortConfig]);
 
-  // Event handlers for sorting
   const handleYearUp = () => setSortConfig({ key: "year", ascending: true });
   const handleYearDown = () => setSortConfig({ key: "year", ascending: false });
   const handleBestRate = () =>
