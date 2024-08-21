@@ -1,3 +1,9 @@
+main {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
 .movies-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -8,4 +14,28 @@
 .movie-information {
     background-color: aqua;
     padding: 1rem;
+}
+
+.movie-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.movie-information h1 {
+    font-size: 1.5rem;
+}
+
+.movie-information h2 {
+    font-size: 1.2rem;
+}
+
+.search-input {
+    margin-bottom: 1rem;
+}
+
+.sort-buttons {
+    margin-bottom: 1rem;
 }

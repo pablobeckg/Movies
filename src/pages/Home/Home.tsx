@@ -9,7 +9,10 @@ const Home = () => {
   const [inputValue, setInputValue] = useState<string>("");
 
   // Combined state for sorting
-  const [sortConfig, setSortConfig] = useState<{ key: string; ascending: boolean } | null>(null);
+  const [sortConfig, setSortConfig] = useState<{
+    key: string;
+    ascending: boolean;
+  } | null>(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -20,7 +23,9 @@ const Home = () => {
       }
 
       if (sortConfig) {
-        selectQuery = selectQuery.order(sortConfig.key, { ascending: sortConfig.ascending });
+        selectQuery = selectQuery.order(sortConfig.key, {
+          ascending: sortConfig.ascending,
+        });
       }
 
       const result = await selectQuery;
@@ -38,11 +43,12 @@ const Home = () => {
   // Event handlers for sorting
   const handleYearUp = () => setSortConfig({ key: "year", ascending: true });
   const handleYearDown = () => setSortConfig({ key: "year", ascending: false });
-  const handleBestRate = () => setSortConfig({ key: "rating", ascending: false });
+  const handleBestRate = () =>
+    setSortConfig({ key: "rating", ascending: false });
 
   return (
     <main>
-      <div>
+      <div className="search-input">
         <input
           type="text"
           id="title-search"
@@ -50,6 +56,8 @@ const Home = () => {
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button onClick={() => setSearchTerm(inputValue)}>Search</button>
+      </div>
+      <div className="sort-buttons">
         <button onClick={handleYearUp}>Year Up</button>
         <button onClick={handleYearDown}>Year Down</button>
         <button onClick={handleBestRate}>Best Rate</button>
@@ -59,13 +67,14 @@ const Home = () => {
         {movies?.map((movie) => (
           <div key={movie.id} className="movie-information">
             <h1>{movie.title}</h1>
+            <p>{movie.year}</p>
             <h2>
               {movie.directors?.firstName} {movie.directors?.lastName}
             </h2>
-            <h2>{movie.year}</h2>
-            <h2>{movie.length}</h2>
-            <h2>{movie.genres}</h2>
-            <h2>{movie.rating}</h2>
+
+            <p>{movie.length}</p>
+            <p>{movie.genres}</p>
+            <p>{movie.rating}</p>
           </div>
         ))}
       </section>
