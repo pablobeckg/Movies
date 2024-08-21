@@ -1,0 +1,11 @@
+.movies-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 70%;
+}
+
+.movie-information {
+    background-color: aqua;
+    padding: 1rem;
+}
