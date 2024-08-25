@@ -23,7 +23,10 @@ const LoginStatus = () => {
     <div className="login-status">
       {user ? (
         <div>
-          <span>Welcome, {user.email}</span>
+           <span>Welcome, </span>
+          <span>
+            <Link to="/profile">{user.email}</Link>
+          </span>
           <button className="logout-button" onClick={(handleLogoutClicked)}>Logout</button>
         </div>
       ) : (
